@@ -2,6 +2,9 @@ const band = document.querySelector("#band");
 
 const assets = ["crash","kick","snare","tom"];
 
+
+// const div = document.createElement("div");
+const fregment = document.createDocumentFragment();
 assets.forEach((asset) => {
     const box = document.createElement("div"); //blank div
     box.classList.add("box");
@@ -16,11 +19,9 @@ assets.forEach((asset) => {
 
     box.addEventListener("click", () => {
         sound.play();
-        
     })
 
     window.addEventListener("keydown", (e) => {
-        console.log(e)
         if(e.key == "c" && asset == "crash"){
             sound.play();
             box.classList.add("scale");
@@ -38,7 +39,6 @@ assets.forEach((asset) => {
     })
 
     window.addEventListener("keyup", (e) => {
-        console.log(e)
         if(e.key == "c" && asset == "crash"){
             box.classList.remove("scale");
         }
@@ -52,5 +52,17 @@ assets.forEach((asset) => {
     })
 
     box.append(name);
-    band.append(box);
+    fregment.append(box);
 })
+
+band.append(fregment);
+
+// window.addEventListener("keypress", (e) => {
+//     assets.forEach((asset) => {
+//         const sound = document.createElement("audio");
+//         sound.src = "assets/" + asset + ".mp3";
+//         if(e.key === asset.slice(0, 1)){
+//             sound.play();
+//         }
+//     })
+// })
